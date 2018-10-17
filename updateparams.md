@@ -4,6 +4,8 @@ Since the mainnet launch the global blockchain parameters were left as default, 
 
 This proposal aims to change the current value for `target_block_cpu_usage_pct` from `1000` (10%) to `2000` (20%), tests were performed on the CryptoKylin testnet showing that the algorithm transition happens in a much smoother way and also allowed more resources from the nodes to be used. Test reports are available here: 
 
+https://docs.google.com/spreadsheets/d/1m_YZ1FFC1awRjXEA-wjtXAl7LzyWB9xE3qupdlQU7fc/edit?usp=sharing
+
 Ideally, this value should be updated considering the growth of usage on the mainnet, and it is a safe parameter to revert at any time. 
 
 ## Proposal Review
@@ -68,7 +70,7 @@ On-chain values can be retrived usign `cleos get table eosio eosio global`, ther
 
 该提案旨在将`target_block_cpu_usage_pct`的当前值从`1000`（10％）更改为`2000`（20％），该提案已经在CryptoKylin Testnet上测试过，也成功让分配算法利用更多的节点实际资源。 测试报告可在此处获得：
 
-[insert report link here]
+https://docs.google.com/spreadsheets/d/1m_YZ1FFC1awRjXEA-wjtXAl7LzyWB9xE3qupdlQU7fc/edit?usp=sharing
 
 该配置也需要随着主网使用量的变化做更改，此改变也可以随时安全撤回。
 
@@ -135,6 +137,8 @@ On-chain values can be retrived usign `cleos get table eosio eosio global`, ther
 메인넷 출시 이후 글로벌 블록체인 파라미터는 디폴트값으로 남았으며, 최근에는 사용량이 증가하면서 사용자는 시스템 컨트랙트으로 인해 CPU 정체 정체 현상을 이른 시점에 경험하게 되었습니다. 블록 당 허용되는 CPU 시간의 총 200ms 중 10 %에 도달하면 CPU 할당 알고리즘은 혼잡(congestion) 모드로 전환되며, 모든 사용자는 전체 네트워크에 비례하여 스테이크된 EOS양을 기반으로 나머지 할당량을 공유합니다. 결과적으로 검증자(validator)의 실제 CPU 사용량은 매우 낮지만 CPU 가격은 높아졌습니다.
 
 이 제안은 `target_block_cpu_usage_pct`의 현재 값을 `1000`(10 %)에서 `2000`(20 %)으로 변경하는 것을 목표로 하고 있으며, CryptoKylin 테스트넷에서 진행한 테스트를 통해 네트워크에서 알고리즘 전환이 훨씬 원활하게 발생하고 노드에서 더 많은 리소스를 사용할 수 있음을 보여줌을 확인했습니다. 테스트 보고서는 다음에서 확인할 수 있습니다.
+
+https://docs.google.com/spreadsheets/d/1m_YZ1FFC1awRjXEA-wjtXAl7LzyWB9xE3qupdlQU7fc/edit?usp=sharing
 
 이상적으로, 이 값은 메인넷의 사용량 증가를 고려하여 업데이트 되어야 하며 언제든지 되돌릴 수 있는 안전한 파라미터입니다.
 
