@@ -2,7 +2,7 @@
 
 Since the mainnet launch the global blockchain parameters were left as default, and now with a recent increase of the usage, the users noticed that the system contract is triggering the CPU congestion mode too early. As soon as a block hits 10% of the total 200ms of CPU time allowed per block, the CPU allocation algorithm switches to the congestion mode and every user if left with his share of the remaining allocation based on their stake in proportion to the whole network stake. What ended up happening is that while the actual CPU usage of the validators is very low, the CPU price became higher.
 
-This proposal aims to change the current value for `target_block_cpu_usage_pct` from `1000` (10%) to `2000` (20%), tests were performed on the CryptoKylin testnet with values up to 50% showing that the algorithm transition happens in a much smoother way and also allowed more resources from the nodes to be used. Test reports are available here: 
+This proposal aims to change the current value for `target_block_cpu_usage_pct` from `1000` (10%) to `2000` (20%), tests were performed on the CryptoKylin testnet showing that the algorithm transition happens in a much smoother way and also allowed more resources from the nodes to be used. Test reports are available here: 
 
 ## Proposal Review
 
