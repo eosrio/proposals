@@ -4,6 +4,8 @@ Since the mainnet launch the global blockchain parameters were left as default, 
 
 This proposal aims to change the current value for `target_block_cpu_usage_pct` from `1000` (10%) to `2000` (20%), tests were performed on the CryptoKylin testnet showing that the algorithm transition happens in a much smoother way and also allowed more resources from the nodes to be used. Test reports are available here: 
 
+Ideally this value can be update considering the growth on usage on the mainnet and its a safe value to revert at any time. 
+
 ## Proposal Review
 
 The only action is eosio::setparams, so it can be easily reviewed with `cleos multisig review eosriobrazil updateparams`, which should return:
