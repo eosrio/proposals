@@ -127,3 +127,68 @@ On-chain values can be retrived usign `cleos get table eosio eosio global`, ther
 
 现链上数据可以通过 `cleos get table eosio eosio global` 查看。
 
+
+# 한국어 번역 (by EOSYS)
+
+## 동기
+
+메인넷 출시 이후 글로벌 블록체인 파라미터는 디폴트값으로 남았으며, 최근에는 사용량이 증가하면서 사용자는 시스템 컨트랙트으로 인해 CPU 정체 정체 현상을 이른 시점에 경험하게 되었습니다. 블록 당 허용되는 CPU 시간의 총 200ms 중 10 %에 도달하면 CPU 할당 알고리즘은 혼잡(congestion) 모드로 전환되며, 모든 사용자는 전체 네트워크에 비례하여 스테이크된 EOS양을 기반으로 나머지 할당량을 공유합니다. 결과적으로 검증자(validator)의 실제 CPU 사용량은 매우 낮지만 CPU 가격은 높아졌습니다.
+
+이 제안은 `target_block_cpu_usage_pct`의 현재 값을 `1000`(10 %)에서 `2000`(20 %)으로 변경하는 것을 목표로 하고 있으며, CryptoKylin 테스트넷에서 진행한 테스트를 통해 네트워크에서 알고리즘 전환이 훨씬 원활하게 발생하고 노드에서 더 많은 리소스를 사용할 수 있음을 보여줌을 확인했습니다. 테스트 보고서는 다음에서 확인할 수 있습니다.
+
+이상적으로, 이 값은 메인넷의 사용량 증가를 고려하여 업데이트 되어야 하며 언제든지 되돌릴 수 있는 안전한 파라미터입니다.
+
+## 제안 리뷰
+
+유일한 액션은 eosio::setparams이며, 이는 `cleos multisig review eosriobrazil updateparams`를 통해 쉽게 확인할 수 있으며, 다음과 같은 값을 리턴합니다:
+
+```
+{
+  "proposal_name": "updateparams",
+  "packed_transaction": "3abdca5b00000000000000000000010000000000ea30550000c0d25c53b3c2010000000000ea305500000000a8ed3232440000100000000000e8030000000008000c000000f40100001400000064000000400d0300d0070000f049020064000000100e00005802000080533b00001000000400060000",
+  "transaction": {
+    "expiration": "2018-10-20T05:29:30",
+    "ref_block_num": 0,
+    "ref_block_prefix": 0,
+    "max_net_usage_words": 0,
+    "max_cpu_usage_ms": 0,
+    "delay_sec": 0,
+    "context_free_actions": [],
+    "actions": [{
+        "account": "eosio",
+        "name": "setparams",
+        "authorization": [{
+            "actor": "eosio",
+            "permission": "active"
+          }
+        ],
+        "data": {
+          "params": {
+            "max_block_net_usage": 1048576,
+            "target_block_net_usage_pct": 1000,
+            "max_transaction_net_usage": 524288,
+            "base_per_transaction_net_usage": 12,
+            "net_usage_leeway": 500,
+            "context_free_discount_net_usage_num": 20,
+            "context_free_discount_net_usage_den": 100,
+            "max_block_cpu_usage": 200000,
+            "target_block_cpu_usage_pct": 2000,
+            "max_transaction_cpu_usage": 150000,
+            "min_transaction_cpu_usage": 100,
+            "max_transaction_lifetime": 3600,
+            "deferred_trx_expiration_window": 600,
+            "max_transaction_delay": 3888000,
+            "max_inline_action_size": 4096,
+            "max_inline_action_depth": 4,
+            "max_authority_depth": 6
+          }
+        },
+        "hex_data": "0000100000000000e8030000000008000c000000f40100001400000064000000400d0300d0070000f049020064000000100e00005802000080533b000010000004000600"
+      }
+    ],
+    "transaction_extensions": []
+  }
+}
+```
+
+체인 위의 값은 usign `cleos get table eosio eosio global` 를 통해 되돌릴 수 있으며, 시스템 컨트랙트를 통해 확장할 수 있는 더 많은 파라미터들이 있습니다. 따라서 setparams 액션을 통과할 필요가 없습니다.
