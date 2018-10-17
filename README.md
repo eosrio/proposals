@@ -1,0 +1,2 @@
+# proposals
+eosio.msig proposals
