@@ -2,7 +2,9 @@
 
 Since the mainnet launch the global blockchain parameters were left as default, and now with a recent increase of the usage, the users noticed that the system contract is triggering the CPU congestion mode too early. As soon as a block hits 10% of the total 200ms of CPU time allowed per block, the CPU allocation algorithm switches to the congestion mode and every user if left with his share of the remaining allocation based on their stake in proportion to the whole network stake. What ended up happening is that while the actual CPU usage of the validators is very low, the CPU price became higher.
 
-This proposal aims to change the current value for `target_block_cpu_usage_pct` from `1000` (10%) to `2000` (20%), tests were performed on the CryptoKylin testnet with values up to 20% showing that the algorithm transition happens in a much smoother way and also allowed more resources from the nodes to be used. Test reports are available here: 
+This proposal aims to change the current value for `target_block_cpu_usage_pct` from `1000` (10%) to `2000` (20%), tests were performed on the CryptoKylin testnet showing that the algorithm transition happens in a much smoother way and also allowed more resources from the nodes to be used. Test reports are available here: 
+
+Ideally this value can be update considering the growth on usage on the mainnet and its a safe value to revert at any time. 
 
 ## Proposal Review
 
@@ -67,6 +69,8 @@ On-chain values can be retrived usign `cleos get table eosio eosio global`, ther
 该提案旨在将`target_block_cpu_usage_pct`的当前值从`1000`（10％）更改为`2000`（20％），该提案已经在CryptoKylin Testnet上测试过，也成功让分配算法利用更多的节点实际资源。 测试报告可在此处获得：
 
 [insert report link here]
+
+该配置也需要随着主网使用量的变化做更改，此改变也可以随时安全撤回。
 
 ## 审核提案
 
