@@ -9,7 +9,36 @@
 - [eosio.contracts v1.7.1-location](https://github.com/eosrio/eosio.contracts/tree/eos-mainnet/v1.7.1-location)
 
 
-### 1. Build and verify checksums:
+### 1. Patch applied:
+
+```
+@@ -79,7 +79,9 @@ namespace eosiosystem {
+
+       auto idx = _producers.get_index<"prototalvote"_n>();
+
+-      std::vector< std::pair<eosio::producer_key,uint16_t> > top_producers;
++      using value_type = std::pair<eosio::producer_key,uint16_t>;
++
++      std::vector< value_type > top_producers;
+       top_producers.reserve(21);
+
+       for ( auto it = idx.cbegin(); it != idx.cend() && top_producers.size() < 21 && 0 < it->total_votes && it->active(); ++it ) {
+@@ -90,8 +92,10 @@ namespace eosiosystem {
+          return;
+       }
+
+-      /// sort by producer name
+-      std::sort( top_producers.begin(), top_producers.end() );
++       std::sort( top_producers.begin(), top_producers.end(), []( const value_type& lhs, const value_type& rhs ) {
++           //return lhs.first.producer_name < rhs.first.producer_name; // sort by producer name
++           return lhs.second < rhs.second; // sort by location
++       } );
+
+       std::vector<eosio::producer_key> producers;
+```
+
+
+### 2. Build and verify checksums:
 
 #### Build:
 
