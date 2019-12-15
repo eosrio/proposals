@@ -1,7 +1,6 @@
 
 # Deploy eosio.contracts v1.7.1 - Producers Location Patch
 
-
 ## Requirements
 
 - [eosio.cdt 1.6.3](https://github.com/EOSIO/eosio.cdt/tree/v1.6.3)
