@@ -72,7 +72,7 @@ SHA256(eosio.system.wasm)= df5aa4c8295011e055baa631045844b1363cb7c15b5a4804756f7
 ### 2. Review our proposal
 
 ```
-cleos -u http://api.eosrio.io multisig review eosriobrazil producers-location
+cleos -u http://api.eosrio.io multisig review eosriobrazil prodlocation
 ```
 
 ***Before approve the multisig, please update your location:***
